@@ -9,7 +9,7 @@ Primary developer: Jason Chigabatita
 ### Resources Used
 
 1. **GitHub Repository (TestingLab)**:
-   - Sosera, P. (n.d.). *TestingLab*. GitHub. Retrieved February 10, 2025, from https://github.com/psosera/TestingLab
+   - Osera, P. (n.d.). *TestingLab*. GitHub. Retrieved February 10, 2025, from https://github.com/psosera/TestingLab
 
 2. **Osera's Data Structures Labs - The World's Best Internship**:
    - Osera, P. (n.d.). *The World's Best Internship*. Grinnell College. Retrieved February 10, 2025, from https://osera.cs.grinnell.edu/ttap/data-structures-labs/the-worlds-best-internship.html

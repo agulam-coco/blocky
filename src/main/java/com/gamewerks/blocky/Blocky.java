@@ -57,7 +57,7 @@ public class Blocky {
             if (timeElapsed > SPF) {
                 game.step();
                 panel.paintImmediately(new Rectangle(0, 0, panel.getWidth(), panel.getHeight()));
-                timeElapsed = (long) (timeElapsed - SPF);
+                timeElapsed = (long) (timeElapsed - SPF );
             }
  
         }

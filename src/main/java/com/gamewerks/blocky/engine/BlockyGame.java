@@ -47,9 +47,9 @@ public class BlockyGame {
             //increment blocks
             this.current_index++;
 
-            if (board.collides(activePiece)) {
-                System.exit(0);
-            }
+//            if (board.collides(activePiece)) {
+//                System.exit(0);
+//            }
         }
     }
 
@@ -99,7 +99,10 @@ public class BlockyGame {
         Piece[] return_array = new Piece[PieceKind.ALL.length];
         for (int i = 0; i < PieceKind.ALL.length; i++) {
             //fill array with piece objects of each letter type.
-            return_array[i] = new Piece(PieceKind.ALL[i], new Position(Constants.BOARD_HEIGHT - 1, Constants.BOARD_WIDTH / 2 - 2));
+            
+            //position must start from 2 in order for object to fill in the whole screen
+            //VEERY SNEAKY OSERA
+            return_array[i] = new Piece(PieceKind.ALL[i], new Position(2, Constants.BOARD_WIDTH / 2 - 2));
         }
         return return_array;
     }
@@ -133,7 +136,7 @@ public class BlockyGame {
      * Handles the falling of blocks 
      */
     private void processGravity() {
-        Position nextPos = activePiece.getPosition().add(-1, 0);
+        Position nextPos = activePiece.getPosition().add(1, 0);
         if (!board.collides(activePiece.getLayout(), nextPos)) {
             lockCounter = 0;
             activePiece.moveTo(nextPos);
@@ -168,7 +171,7 @@ public class BlockyGame {
 
     /**
      * Returns the board current well
-     * @return boolean[][]
+     * @return Boolean[][]
      */
     public boolean[][] getWell() {
         return board.getWell();

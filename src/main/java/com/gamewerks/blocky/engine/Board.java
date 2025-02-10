@@ -23,7 +23,7 @@ public class Board {
     public boolean isValidPosition(int row, int col) {
         //SNEAKY OSERA
         //Off by one error
-        return row >= 0 && row <= well.length - 1 && col >= 0 && col <= well[0].length - 1;
+        return row >= 0 && row < well.length - 3 && col >= 0 && col <= well[0].length - 1 ;
     }
 
     /**
