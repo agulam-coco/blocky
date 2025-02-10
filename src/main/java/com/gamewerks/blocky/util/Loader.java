@@ -12,7 +12,10 @@ public class Loader {
         boolean[][] rotation = new boolean[4][4];
         for (int row = 3; row >= 0; row--) {
             String line = in.nextLine();
-            for (int col = 0; col < 5; col++) {
+            
+            //bug here. col should be < 4 for 4 characters 
+            //not col < 5 which is 56 characters
+            for (int col = 0; col < 4; col++) {
                 rotation[row][col] = line.charAt(col) == 'x';
             }
         }
