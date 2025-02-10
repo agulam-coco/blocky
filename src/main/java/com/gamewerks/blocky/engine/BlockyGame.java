@@ -39,6 +39,7 @@ public class BlockyGame {
                 //shuffle peices and reset current index
                 shuffle(this.block_pieces);
                 this.current_index = 0;
+                this.resetPieces(block_pieces);
             }
 
             //activePiece = new Piece(PieceKind.I, new Position(Constants.BOARD_HEIGHT - 1, Constants.BOARD_WIDTH / 2 - 2));
@@ -48,7 +49,7 @@ public class BlockyGame {
             this.current_index++;
 
 //            if (board.collides(activePiece)) {
-//                System.exit(0);
+//                activePiece = null;
 //            }
         }
     }
@@ -60,7 +61,7 @@ public class BlockyGame {
     private void shuffle(Piece[] arr) {
         //System.out.println(arr.length);
 
-        //run loop untill max_roll is exhausted and array is suffledd
+        //run loop untill max_roll is exhausted and array is shuffledd
         for (int i = arr.length; i > 1; i--) {
 
             //random number for round
@@ -74,7 +75,7 @@ public class BlockyGame {
                 //swap random value position with corresponding end of the array
                 this.swap(arr, random_value - 1, i - 1);
             }
-        }
+        }    
     }
 
     //credit: https://stackoverflow.com/a/3624554
@@ -88,6 +89,17 @@ public class BlockyGame {
         Piece temp = arr[pos1];
         arr[pos1] = arr[pos2];
         arr[pos2] = temp;
+    }
+    
+    /**
+     * This resets the position of the new blocks back to the middle top of the panel
+     * @param arr 
+     */
+    private void resetPieces(Piece[] arr){
+        for(int i = 0; i < this.block_pieces.length; i++){
+            //rest position of new blocks
+                    this.block_pieces[i].moveTo(new Position(2, Constants.BOARD_WIDTH / 2 - 2));
+        }
     }
 
     //generate array of blocks 
@@ -130,6 +142,7 @@ public class BlockyGame {
         if (!board.collides(activePiece.getLayout(), nextPos)) {
             activePiece.moveTo(nextPos);
         }
+        
     }
     
     /**

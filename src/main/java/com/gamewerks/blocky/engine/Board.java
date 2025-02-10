@@ -22,7 +22,7 @@ public class Board {
      */
     public boolean isValidPosition(int row, int col) {
         //SNEAKY OSERA
-        //Off by one error
+        //Off by one erro on length and off by three on the row length
         return row >= 0 && row < well.length - 3 && col >= 0 && col <= well[0].length - 1 ;
     }
 
@@ -81,11 +81,13 @@ public class Board {
      * @param n 
      */
     public void deleteRow(int n) {
-        for (int row = 0; row < n - 1; row++) {
+        for (int row = n; row > 0; row--) {   
+            //copies block above to block below
             for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
-                well[row][col] = well[row + 1][col];
+                well[row][col] = well[row - 1][col];
             }
         }
+        //deletes row
         for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
             well[n][col] = false;
         }
