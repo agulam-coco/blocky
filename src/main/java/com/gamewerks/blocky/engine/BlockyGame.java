@@ -25,9 +25,12 @@ public class BlockyGame {
         lockCounter = 0;
         shuffle(this.block_pieces);
         trySpawnBlock();
- 
+
     }
 
+    /**
+     * Spawns a new random block on the screen from the lower center of the screen 
+     */
     private void trySpawnBlock() {
         if (activePiece == null) {
 
@@ -39,19 +42,21 @@ public class BlockyGame {
             }
 
             //activePiece = new Piece(PieceKind.I, new Position(Constants.BOARD_HEIGHT - 1, Constants.BOARD_WIDTH / 2 - 2));
-            
             activePiece = block_pieces[current_index];
-            
+
             //increment blocks
             this.current_index++;
-            
+
             if (board.collides(activePiece)) {
                 System.exit(0);
             }
         }
     }
 
-    //shuffles array 
+    /**
+     * Shuffles the input array of block pieces using the Fisher-Yates shuffle.
+     * @param arr , Array of Piece Objects
+     */
     private void shuffle(Piece[] arr) {
         //System.out.println(arr.length);
 
@@ -63,8 +68,6 @@ public class BlockyGame {
             Random r = new Random();
             int low = 1;
             int random_value = r.nextInt(i - low) + low;
-            
-            System.out.println(i-low);
 
             //if roll is not a pass
             if (random_value != i) {
@@ -75,6 +78,12 @@ public class BlockyGame {
     }
 
     //credit: https://stackoverflow.com/a/3624554
+    /**
+     * Performs a textbook swap on objects in a piece array
+     * @param arr
+     * @param pos1
+     * @param pos2 
+     */
     public void swap(Piece[] arr, int pos1, int pos2) {
         Piece temp = arr[pos1];
         arr[pos1] = arr[pos2];
@@ -82,6 +91,10 @@ public class BlockyGame {
     }
 
     //generate array of blocks 
+    /**
+     * Generates an array of all blocks pieces in the Blocky Universe
+     * @return return_array
+     */
     private Piece[] generatePieces() {
         Piece[] return_array = new Piece[PieceKind.ALL.length];
         for (int i = 0; i < PieceKind.ALL.length; i++) {
@@ -91,6 +104,9 @@ public class BlockyGame {
         return return_array;
     }
 
+    /**
+     * Handles movement input from user
+     */
     private void processMovement() {
         Position nextPos;
         switch (movement) {
@@ -112,7 +128,10 @@ public class BlockyGame {
             activePiece.moveTo(nextPos);
         }
     }
-
+    
+    /**
+     * Handles the falling of blocks 
+     */
     private void processGravity() {
         Position nextPos = activePiece.getPosition().add(-1, 0);
         if (!board.collides(activePiece.getLayout(), nextPos)) {
@@ -129,29 +148,52 @@ public class BlockyGame {
         }
     }
 
+    /**
+     * Process the clearing of lines ones they are filled
+     */
     private void processClearedLines() {
         board.deleteRows(board.getCompletedRows());
     }
 
+    /**
+     * Steps through the game and sequentially does functions
+     */
     public void step() {
         trySpawnBlock();
+        //Missing movement
         processMovement();
         processGravity();
         processClearedLines();
     }
 
+    /**
+     * Returns the board current well
+     * @return boolean[][]
+     */
     public boolean[][] getWell() {
         return board.getWell();
     }
 
+    /**
+     * Returns the active piece on the board
+     * @return Piece
+     */
     public Piece getActivePiece() {
         return activePiece;
     }
 
+    /**
+     * This sets the direction of movement of the falling block
+     * @param movement, the direction the block should move to
+     */ 
     public void setDirection(Direction movement) {
         this.movement = movement;
     }
 
+    /**
+     * This rotates the piece in the given direction
+     * @param dir, direction the pice should be rotated
+     */
     public void rotatePiece(boolean dir) {
         activePiece.rotate(dir);
     }

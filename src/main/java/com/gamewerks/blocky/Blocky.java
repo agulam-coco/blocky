@@ -59,6 +59,7 @@ public class Blocky {
                 panel.paintImmediately(new Rectangle(0, 0, panel.getWidth(), panel.getHeight()));
                 timeElapsed = (long) (timeElapsed - SPF);
             }
+ 
         }
     }
 }
