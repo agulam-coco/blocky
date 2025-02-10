@@ -13,8 +13,9 @@ public class Loader {
         for (int row = 3; row >= 0; row--) {
             String line = in.nextLine();
             
-            //bug here. col should be < 4 for 4 characters 
-            //not col < 5 which is 56 characters
+            //bug here. col should be < 4 for 4 characters.
+            //not col < 5 which is 5 characters.
+            //causing string array error. 
             for (int col = 0; col < 4; col++) {
                 rotation[row][col] = line.charAt(col) == 'x';
             }
