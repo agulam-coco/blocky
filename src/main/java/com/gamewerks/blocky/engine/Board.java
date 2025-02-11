@@ -92,6 +92,8 @@ public class Board {
             well[n][col] = false;
         }
         
+        //SNEAKY OSERA
+        //wrong variables and logic
         //shifts above rows downward
         for (int row = n; row > 0; row--) {
             for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
@@ -108,13 +110,9 @@ public class Board {
      */
     public void deleteRows(List<Integer> rows) {
         for (int i = 0; i < rows.size(); i++) {
-
             int row = rows.get(i);
              deleteRow(row);
-
         }
-        
-        //shift rows
     }
 
     /**

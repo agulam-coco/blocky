@@ -50,6 +50,30 @@ Primary developer: Jason Chigabatita
 ## Changelog
 
 ~~~console
+commit 93e7eeaa2db8780c001b4723c704c5fe20e37b36
+Author: agulam-coco <aguchija@gmail.com>
+Date:   Mon Feb 10 19:19:07 2025 -0600
+
+    Fixed breaking block error and fixed blocks falling down wards errors
+
+commit 9d9076a7d5f23482d83fce5c237bfdac2062241e
+Author: agulam-coco <aguchija@gmail.com>
+Date:   Mon Feb 10 17:22:10 2025 -0600
+
+    Fixed blocks not resetting to the top after call
+
+commit 8f8143b5fd660ca8c2988e12a892cb4037d50580
+Author: agulam-coco <aguchija@gmail.com>
+Date:   Mon Feb 10 16:20:36 2025 -0600
+
+    Fixed the gravity bug and fallign objects out of screen problem
+
+commit 66ac214ff5b2fa571f35c4a0c9f4884f34710eb7
+Author: agulam-coco <aguchija@gmail.com>
+Date:   Mon Feb 10 01:12:44 2025 -0600
+
+    modified README
+
 commit d41aa7e093cb3f45589f4bf4b5c8d993b25cd1d5
 Author: agulam-coco <aguchija@gmail.com>
 Date:   Mon Feb 10 01:02:24 2025 -0600
@@ -91,5 +115,4 @@ Author: Peter-Michael Osera <osera@cs.grinnell.edu>
 Date:   Wed Feb 5 09:13:20 2025 -0600
 
     initial commit
-
 ~~~
