@@ -42,15 +42,11 @@ public class BlockyGame {
                 this.resetPieces(block_pieces);
             }
 
-            //activePiece = new Piece(PieceKind.I, new Position(Constants.BOARD_HEIGHT - 1, Constants.BOARD_WIDTH / 2 - 2));
             activePiece = block_pieces[current_index];
 
             //increment blocks
             this.current_index++;
 
-//            if (board.collides(activePiece)) {
-//                activePiece = null;
-//            }
         }
     }
 

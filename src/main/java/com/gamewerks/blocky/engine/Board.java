@@ -16,6 +16,7 @@ public class Board {
 
     /**
      * Returns whether given position is valid on the board
+     *
      * @param row
      * @param col
      * @return true is valid else false
@@ -23,23 +24,26 @@ public class Board {
     public boolean isValidPosition(int row, int col) {
         //SNEAKY OSERA
         //Off by one erro on length and off by three on the row length
-        return row >= 0 && row < well.length - 3 && col >= 0 && col <= well[0].length - 1 ;
+        return row >= 0 && row < well.length - 3 && col >= 0 && col <= well[0].length - 1;
     }
 
     /**
      * REturns true if piece collides with anything
+     *
      * @param p
-     * @return 
+     * @return
      */
     public boolean collides(Piece p) {
         return collides(p.getLayout(), p.getPosition());
     }
 
     /**
-     * Second collides function called by the one  above that does collision testing
+     * Second collides function called by the one above that does collision
+     * testing
+     *
      * @param layout
      * @param pos
-     * @return 
+     * @return
      */
     public boolean collides(boolean[][] layout, Position pos) {
         for (int row = 0; row < layout.length; row++) {
@@ -57,10 +61,11 @@ public class Board {
         }
         return false;
     }
-    
+
     /**
      * Function adds a piece to the well
-     * @param p 
+     *
+     * @param p
      */
     public void addToWell(Piece p) {
         boolean[][] layout = p.getLayout();
@@ -77,45 +82,46 @@ public class Board {
     }
 
     /**
-     * This function deletes a row from the well 
-     * @param n 
+     * This function deletes a row from the well
+     *
+     * @param n
      */
     public void deleteRow(int n) {
-        for (int row = n; row > 0; row--) {   
-            //copies block above to block below
-            for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
-                well[row][col] = well[row - 1][col];
-            }
-        }
         //deletes row
         for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
             well[n][col] = false;
         }
+        
+        //shifts above rows downward
+        for (int row = n; row > 0; row--) {
+            for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
+                well[row][col] = well[row-1][col];
+            }
+        }
+        
     }
-
     //credit: https://stackoverflow.com/a/28954225
     /**
-     * This function deletes a list of rows 
-     * @param rows 
+     * This function deletes a list of rows
+     *
+     * @param rows
      */
     public void deleteRows(List<Integer> rows) {
         for (int i = 0; i < rows.size(); i++) {
 
             int row = rows.get(i);
-
-            //delete all rows in array
-            for (int j = 0; j < row; j++) {
-                //use ternary to 
-                deleteRow(row);
-            }
+             deleteRow(row);
 
         }
+        
+        //shift rows
     }
 
     /**
      * Checks if a row is completed and has all its spaces filled
+     *
      * @param row
-     * @return 
+     * @return
      */
     public boolean isCompletedRow(int row) {
         boolean isCompleted = true;
@@ -127,7 +133,8 @@ public class Board {
 
     /**
      * Returns a list containing all completed rows
-     * @return 
+     *
+     * @return
      */
     public List getCompletedRows() {
         List completedRows = new LinkedList();
@@ -143,7 +150,8 @@ public class Board {
 
     /**
      * Returns the current well
-     * @return 
+     *
+     * @return
      */
     public boolean[][] getWell() {
         return well;
